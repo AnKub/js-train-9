@@ -7,13 +7,21 @@
  * Повертає - foundElement - перший елемент масиву, який є більшим за задане число
  */
 function findElementGreaterThan(arr, num) {
+  if (!Array.isArray(arr)) return undefined;
+  else {
+    const result = arr.find((element) => element > num);
+    if (typeof result === undefined)
+      return "МА";
+    else return result;
+  }
+}
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо undefined
   // повертаємо undefined
   // Використовуємо метод find для пошуку першого елементу, який є більшим за задане число num.
   // Перевіряємо чи є елемент який задовільняє умову
   //Якщо так повертаємо елемент
   // Якщо ні повертаємо рядок Числа яке задовільняе умову не знайдено
-}
+
 
 console.log("Завдання: 1  ==============================");
 console.log(findElementGreaterThan([1, 2, 3, 4, 5], 3)); // Виведе 4
@@ -28,10 +36,15 @@ console.log(findElementGreaterThan([1, 2, 3, 4, 5], 3)); // Виведе 4
  * Якщо об'єкт не знайдено, повертає -1.
  */
 function findIndexByProperty(arr, name) {
+  if (!Array.isArray(arr)) return -1;
+  else {
+    return arr.findIndex((element) => element.name === name);
+  }
+}
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо -1
   // Використовуємо метод findIndex для пошуку індексу об'єкта, властивість 'name' якого співпадає з заданим іменем.
   // Повертаємо знайдений індекс або -1, якщо об'єкт не знайдено.
-}
+
 
 console.log("Завдання: 2  ==============================");
 console.log(
@@ -54,10 +67,20 @@ console.log(
  * Якщо таке число не знайдено, повертає 'Парних чисел не знайдено'.
  */
 function findLastEvenNumber(arr) {
+  if (!Array.isArray(arr)) return "Має бути масивом";
+  else {
+    const result = arr.findLast((element) => element % 2 === 0);
+
+    if (result === undefined) { 
+      return "Не знайдено";
+
+    } else return result;
+  }
+}
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
   // За допомогою метода findLast знаходимо останнє парне число в масиві.
   // Повертаємо знайдене число або 'Парних чисел не знайдено', якщо таке число не знайдено.
-}
+
 
 console.log("Завдання: 3 ==============================");
 console.log(findLastEvenNumber([1, 2, 3, 4, 5])); // Виведе 4
@@ -72,11 +95,16 @@ console.log(findLastEvenNumber([1, 2, 3, 4, 5])); // Виведе 4
  * Повертає - subArrayString - рядок, отриманий в результаті конвертації підмасиву.
  */
 function getSubArrayAndConvertToString(arr, startIdx) {
+  if (!Array.isArray(arr)) return "Має бути масивом";
+  else {
+    const arr2 = arr.slice(startIdx);
+    return arr2.join(" ");
+  }
+}
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
   // За допомогою методу slice() отримуємо підмасив від заданого індексу до кінця масиву.
   // За допомогою методу join() конвертуємо підмасив в рядок.
   // Повертаємо рядок.
-}
 
 console.log("Завдання: 4 ==============================");
 console.log(
@@ -96,11 +124,20 @@ console.log(
  * Повертає - arrayKeys - масив ключів вхідного масиву.
  */
 function getArrayKeys(arr) {
+  if (!Array.isArray(arr)) return "Вхідний параметр має бути масивом";
+  else {
+    const arrayKeys = [];
+    const iterator = arr.keys();
+    for (const key of iterator) {
+      arrayKeys.push(key);
+    }
+    return arrayKeys;
+  }
+}
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
   // За допомогою методу keys() отримуємо об'єкт ітератора, який містить ключі масиву.
   // Конвертуємо ітератор в масив за допомогою методу from.
   // Повертаємо масив ключів.
-}
 
 console.log("Завдання: 5  ==============================");
 console.log(getArrayKeys(["яблуко", "банан", "апельсин"])); // Виведе [0, 1, 2]
@@ -114,12 +151,22 @@ console.log(getArrayKeys(["яблуко", "банан", "апельсин"])); /
  * Повертає - positiveArrayValues - масив додатніх значень вхідного масиву.
  */
 function getPositiveArrayValues(arr) {
+  if (!Array.isArray(arr)) return "Має бути масивом";
+  else {
+    const iterator = arr.values();
+    const arr2 = [];
+    for (const value of iterator) {
+      arr2.push(value);
+    }
+    const positiveArrayValues = arr2.filter((el) => el > 0);
+    return positiveArrayValues;
+  }
+}
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
   // За допомогою методу values() отримуємо об'єкт ітератора, який містить значення масиву.
   // Конвертуємо ітератор в масив.
   // За допомогою методу filter() отримуємо масив лише з додатніми значеннями.
   // Повертаємо масив додатніх значень.
-}
 
 console.log("Завдання: 6  ==============================");
 console.log(getPositiveArrayValues([-2, -1, 0, 1, 2])); // Виведе [1, 2]
@@ -134,11 +181,17 @@ console.log(getPositiveArrayValues([-2, -1, 0, 1, 2])); // Виведе [1, 2]
  * Повертає - doubledArray - масив подвоєних елементів після видалення.
  */
 function removeAndDouble(arr, startIdx) {
+  if (!Array.isArray(arr)) return "Вхідний параметр має бути масивом";
+  else {
+    const array = arr.splice(0, startIdx);
+    const doubledArray = array.map((el) => el * 2);
+    return doubledArray;
+  }
+}
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
   // За допомогою методу splice() видаляємо елементи масиву починаючи з заданого індексу.
   // За допомогою методу map() подвоюємо кожен елемент масиву.
   // Повертаємо масив подвоєних елементів.
-}
 
 console.log("Завдання: 7 ==============================");
 console.log(removeAndDouble([1, 2, 3, 4, 5], 2)); // Виведе [ 2, 4 ]
@@ -152,11 +205,19 @@ console.log(removeAndDouble([1, 2, 3, 4, 5], 2)); // Виведе [ 2, 4 ]
  * Повертає - sum - сума елементів масиву.
  */
 function sumAndPrint(arr) {
+  if (!Array.isArray(arr)) return "Вхідний параметр має бути масивом";
+  else {
+    let sum = arr.reduce(
+      (accumulator, currentValue) => accumulator + currentValue
+    );
+    arr.forEach((element) => console.log(element));
+    console.log(sum);
+  }
+}
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
   // За допомогою методу reduce() обчислюємо суму елементів масиву.
   // За допомогою методу forEach() виводимо кожен елемент масиву в консоль.
   // Повертаємо суму елементів масиву.
-}
 
 console.log("Завдання: 8  ==============================");
 console.log(sumAndPrint([1, 2, 3, 4, 5])); // Виведе
@@ -177,12 +238,15 @@ console.log(sumAndPrint([1, 2, 3, 4, 5])); // Виведе
  * Повертає - filteredSquaredArray - вирівняний масив, елементи якого підняті до квадрату і профільтровані.
  */
 function flattenSquareAndFilter(arr, threshold) {
-  // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
-  // За допомогою методу flat() вирівнюємо масив.
-  // За допомогою методу map() підносимо кожен елемент масиву до квадрату.
-  // За допомогою методу filter() фільтруємо елементи, які більше за порогове значення.
-  // Повертаємо вирівняний масив, елементи якого підняті до квадрату і профільтровані.
+  if (!Array.isArray(arr)) return "Має бути масивом";
+  else {
+    const flatArray = arr.flat();
+    const SquaredArray = flatArray.map((el) => el * el);
+    const filteredSquaredArray = SquaredArray.filter((el) => el > threshold);
+    return filteredSquaredArray;
+  }
 }
+
 
 console.log("Завдання: 9 ==============================");
 console.log(
@@ -206,12 +270,21 @@ console.log(
  * Повертає - sum - сума останніх n елементів масиву.
  */
 function getLastElementsSumAndPrint(arr, n) {
+  if (!Array.isArray(arr)) return "Має бути масивом";
+  else {
+    arr = arr.slice(-n);
+    const sum = arr.reduceRight(
+      (accumulator, element) => accumulator + element
+    );
+    arr.forEach((element) => console.log(element));
+    return sum;
+  }
+}
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
   // За допомогою методу slice() вибираємо останні n елементів масиву.
   // За допомогою методу reduceRight() обчислюємо суму останніх n елементів масиву.
   // За допомогою методу forEach() виводимо кожен елемент з останніх n в консоль.
   // Повертаємо суму останніх n елементів масиву.
-}
 
 console.log("Завдання: 10  ==============================");
 console.log(getLastElementsSumAndPrint([1, 2, 3, 4, 5], 2)); // Виведе
